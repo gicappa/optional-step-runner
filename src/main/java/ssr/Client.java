@@ -11,17 +11,23 @@ public class Client {
     }
 
     public String createDevice() {
-        return runAfterDelay(2, "device-123");
+        return runAfterDelay(1, "en0");
     }
 
-    public List<String> getAvalablesIps() {
-        return runAfterDelay(2, List.of("1.3.3.5", "3.2.1.3"));
+    public List<String> getAvailableIps() {
+        return runAfterDelay(1, List.of("192.168.1.1", "192.168.1.2"));
     }
 
     public String getInterfaceId(String deviceId) {
-        return runAfterDelay(1, "interface-id[%s]".formatted(deviceId));
+        return runAfterDelay(1, "int[%s]".formatted(deviceId));
     }
 
+    @SuppressWarnings("all")
+    public String reserveIp(ReserveIpRequest request) {
+        return "192.168.1.2";
+    }
+
+    @SuppressWarnings("all")
     private static <T> T runAfterDelay(int seconds, T x) {
         try {
             sleep(Duration.ofSeconds(seconds));
